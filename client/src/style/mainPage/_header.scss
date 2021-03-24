@@ -1,0 +1,17 @@
+.main__page__header{
+  position: relative;
+  width: 80%;
+  left: 20%;
+}
+
+.main__page__header__card{
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: linear-gradient(132.02deg, rgba(178, 76, 99, 0.989229) 15%, #1D1E2C 86.7%);
+  border-radius: 10px;
+  z-index: 999;
+}

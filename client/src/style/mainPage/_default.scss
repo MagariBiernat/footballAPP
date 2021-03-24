@@ -1,0 +1,25 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+// body{
+//  display: flex;
+//  flex-direction: column;
+//  flex-wrap: wrap;
+//  justify-content: flex-start;
+//  align-items: stretch;
+//  align-content: stretch;a
+//  background-color: #000;
+// }
+
+body{
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  overflow: auto;
+  background-color: #1D1E2C;
+  // background-color: transparent;
+}
