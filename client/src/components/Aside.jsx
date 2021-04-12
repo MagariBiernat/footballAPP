@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../style/mainPage/_aside.scss'
+// import '../style/mainPage/_aside.scss'
 
 
 const Aside = () => {

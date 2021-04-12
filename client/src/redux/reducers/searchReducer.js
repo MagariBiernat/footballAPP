@@ -1,22 +1,21 @@
-import {GET_SEARCH, LOADING_SEARCH} from '../types'
+import { GET_SEARCH, LOADING_SEARCH } from "../types"
 
 const initialValue = {
   loading: false,
-  data: []
+  data: [],
 }
 
 export const searchReducer = (state = initialValue, action) => {
-  switch(action.type) {
-
+  switch (action.type) {
     case LOADING_SEARCH:
       return {
         loading: true,
-      data: {}
-    }
+        data: {},
+      }
     case GET_SEARCH:
       return {
         loading: false,
-        data: action.payload
+        data: action.payload,
       }
     default:
       return state
