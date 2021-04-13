@@ -12,14 +12,10 @@ import Search from "./pages/Search"
 
 import "./style/mainPage/style.scss"
 
-axios.defaults.baseURL = "http://api.isportsapi.com/sport/football/"
+axios.defaults.baseURL = "http://localhost:3010"
 axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8"
-axios.defaults.timeout = 5000
-// axios.defaults.headers["Host"] = "<localhost>"
-axios.defaults.headers.get["Access-Control-Allow-Origin"] = "*"
-axios.defaults.headers.get["Access-Control-Allow-Origin"] = "*"
+axios.defaults.headers["Access-Control-Allow-Origin"] = "*"
 axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*"
-axios.defaults.headers["Accepter"] = "application/json"
 function App() {
   return (
     <>
