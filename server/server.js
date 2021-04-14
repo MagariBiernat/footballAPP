@@ -6,6 +6,8 @@ const request = require("request")
 const cors = require("cors")
 const app = express()
 
+const searchRoute = require("./routes/searchRoute")
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors({ credentials: true, origin: true }))
@@ -36,6 +38,8 @@ app.post("/api/football", (req, res) => {
     }
   )
 })
+
+app.use("/api/search", searchRoute)
 
 app.get("/api/football/:searchValue", (req, res) => {
   const { searchValue } = req.params

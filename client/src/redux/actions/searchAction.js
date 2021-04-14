@@ -12,5 +12,9 @@ export const searchAction = (searchValue) => (dispatch) => {
     searchValue: searchValue,
   }
 
-  axios.post("/api/football", data).then((response) => console.log(response))
+  const data2 = {
+    prefixes: "league/basic",
+  }
+
+  axios.post("/api/football", data2).then((response) => console.log(response))
 }
