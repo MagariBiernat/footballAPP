@@ -7,6 +7,7 @@ const cors = require("cors")
 const app = express()
 
 const searchRoute = require("./routes/searchRoute")
+const leagueRoute = require("./routes/leagueRoute")
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -40,6 +41,7 @@ app.post("/api/football", (req, res) => {
 })
 
 app.use("/api/search", searchRoute)
+app.use('/api/league', leagueRoute)
 
 app.get("/api/football/:searchValue", (req, res) => {
   const { searchValue } = req.params
