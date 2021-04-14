@@ -9,44 +9,45 @@ const validateSearchValue = require("../validators/validateSearchValue")
 const Promise = require("bluebird")
 const Request = Promise.promisifyAll(require("request"), { multiArgs: true })
 
-/* // TODO: 
-	! validate searchValue
-	! create object(hashmap ?) with results
-	! fetch -> footballers -> teams -> leagues
-*/
+router.get("/:searchValue", (req, res) => {
+  const { errors, isValid } = validateSearchValue(req.params)
 
-router.get("", (req, res) => {
-  const { errors, isValid } = validateSearchValue(req.body)
-
-  const { searchValue } = req.body
+  const { searchValue } = req.params
 
   if (!isValid) {
     return res.status(400).json(errors)
   } else {
-    const results = {}
+    let results = {}
 
     Request.getAsync(
       `${BASE_API_URL}player/search?api_key=${API_KEY}&name=${searchValue}`
     )
       .spread((response, body) => {
-        results.footballers = JSON.parse(body.data)
+        results.footballers = JSON.parse(body).data
 
         return Request.getAsync(
           `${BASE_API_URL}team/search?api_key=${API_KEY}&name=${searchValue}`
         )
       })
       .spread((response, body) => {
-        results.teams = JSON.parse(body.data)
+        results.teams = JSON.parse(body).data
+        return Request.getAsync(
+          `${BASE_API_URL}league/basic?api_key=${API_KEY}`
+        )
+      })
+      .spread((response, body) => {
+        const { data } = JSON.parse(body)
+
+        const resultsLeagues = data.filter((obj) => {
+          return obj.name.includes(searchValue)
+        })
+        results.leagues = resultsLeagues
 
         return res.json(results)
       })
       .catch((err) => {
         return res.status(400).json(err)
       })
-
-    console.log("results = " + results)
-
-    return res.json(results)
   }
 })
 
